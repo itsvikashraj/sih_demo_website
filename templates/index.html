@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Museum Chatbot</title>
+    <style>
+        /* Main website styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Pop-up Chatbot Button */
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Chatbot Pop-up Container */
+        #chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 400px;
+            height: 500px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            overflow: hidden;
+        }
+
+        /* Customizing Dialogflow Messenger */
+        df-messenger {
+            --df-messenger-button-titlebar-color: #007bff;
+            --df-messenger-button-titlebar-font-color: white;
+            --df-messenger-chat-background-color: #f7f7f7;
+            --df-messenger-font-color: #333333;
+            --df-messenger-send-icon: #007bff;
+            --df-messenger-user-message: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Chatbot Pop-up Button -->
+<button id="chatbot-button">💬</button>
+
+<!-- Chatbot Pop-up Container -->
+<div id="chatbot-container">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="SVRY-ChatBot-For-Ticket-Booking"
+      agent-id="ed20570c-fa03-4afc-b40d-64eae5692736"
+      language-code="en"
+    ></df-messenger>
+</div>
+
+<script>
+    // JavaScript to toggle the chatbot pop-up
+    document.getElementById('chatbot-button').addEventListener('click', function() {
+        var chatbotContainer = document.getElementById('chatbot-container');
+        if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
+            chatbotContainer.style.display = 'block';
+        } else {
+            chatbotContainer.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
